@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Workout Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Oswald da Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Favicon (logo del sito) -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="logo-title">
+        <img src="img/logo.png" alt="Logo" class="logo">
+        <h1>Workout Tracker</h1>
+    </div>
+</header>
+
+<div class="day-selector">
+    <button onclick="showDay('pushDay')">Push Day</button>
+    <button onclick="showDay('pullDay')">Pull Day</button>
+</div>
+
+<!-- Push Day -->
+<div id="pushDay" class="day active">
+    <h2>Push Day</h2>
+
+    <section class="muscle-group">
+        <h3>Petto</h3>
+
+        <div class="exercise">
+            <img src="img/BenchPress.gif" alt="Panca piana con bilanciere">
+            <h4>Panca piana con bilanciere</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+
+        <div class="exercise">
+            <img src="img/croci_seduto.gif" alt="Croci da Seduto">
+            <h4>Croci da Seduto</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+    </section>
+
+    <section class="muscle-group">
+        <h3>Tricipiti</h3>
+
+        <div class="exercise">
+            <img src="img/CBLyingTricepsExtension.gif" alt="Estensioni su panca piana">
+            <h4>Estensioni su panca piana</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+
+        <div class="exercise">
+            <img src="img/CBTricepsExtensionRope.gif" alt="Estensioni con Cavi">
+            <h4>Estensioni con Cavi</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+    </section>
+
+    <section class="muscle-group">
+        <h3>Spalle</h3>
+
+        <div class="exercise">
+            <img src="img/SMShoulderPress.gif" alt="Lento avanti al multipower">
+            <h4>Lento avanti al multipower</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+
+        <div class="exercise">
+            <img src="img/CBFrontLateralRaise.gif" alt="Alzate laterali ai cavi">
+            <h4>Alzate laterali ai cavi</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+    </section>
+
+    <section class="muscle-group">
+        <h3>Quadricipiti</h3>
+
+        <div class="exercise">
+            <img src="img/SLHackSquatQuad.gif" alt="Hack Squat">
+            <h4>Hack Squat</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+
+        <div class="exercise">
+            <img src="img/LVLegExtension.gif" alt="Leg extension">
+            <h4>Leg extension</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+    </section>
+
+    <section class="muscle-group">
+        <h3>Polpacci</h3>
+
+        <div class="exercise">
+            <img src="img/LVSeatedCalfPress.gif" alt="Calf Press">
+            <h4>Calf Press</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+    </section>
+</div>
+
+<!-- Pull Day -->
+<div id="pullDay" class="day">
+    <h2>Pull Day</h2>
+
+    <section class="muscle-group">
+        <h3>Schiena</h3>
+
+        <div class="exercise">
+            <img src="img/CBCloseGripPulldown.gif" alt="Lat machine presa stretta">
+            <h4>Lat machine presa stretta</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+
+        <div class="exercise">
+            <img src="img/CBWideGripSeatedRow.gif" alt="Pulley presa larga">
+            <h4>Pulley presa larga</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+
+        <div class="exercise">
+            <img src="img/LVSeatedRow.gif" alt="Seated low Row">
+            <h4>Seated low Row</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+
+        <div class="exercise">
+            <img src="img/LVWideGripSeatedRow.gif" alt="Seated Row">
+            <h4>Seated Row</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+    </section>
+
+    <section class="muscle-group">
+        <h3>Bicipiti</h3>
+
+        <div class="exercise">
+            <img src="img/DBInclineCurl2ASW.jpg" alt="Curl panca 45">
+            <h4>Curl panca 45</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+
+        <div class="exercise">
+            <img src="img/LVPreacherCurl2ASW.jpg" alt="Bicep machine">
+            <h4>Bicep machine</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+    </section>
+
+    <section class="muscle-group">
+        <h3>Bicipiti femorali</h3>
+
+        <div class="exercise">
+            <img src="img/DBStraightBackStraightLegDeadlift.gif" alt="Stacchi a gambe semitese">
+            <h4>Stacchi a gambe semitese</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+
+        <div class="exercise">
+            <img src="img/LVSeatedLegCurl.gif" alt="Seated leg curl">
+            <h4>Seated leg curl</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+    </section>
+
+    <section class="muscle-group">
+        <h3>Addome</h3>
+
+        <div class="exercise">
+            <img src="img/LVSeatedCrunchArmsForward.gif" alt="Abs machine">
+            <h4>Abs machine</h4>
+            <label>Carico (kg):</label>
+            <input type="number" min="0" placeholder="Inserisci peso">
+            <label>Note:</label>
+            <textarea placeholder="Scrivi info sull'esercizio..."></textarea>
+        </div>
+    </section>
+</div>
+<footer>
+    <p>Workout Tracker © 2025 - Creato da Riccardo</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
