@@ -1,7 +1,5 @@
 /* Reset */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   font-family: 'Oswald', sans-serif;
@@ -14,143 +12,146 @@ body {
 /* Header */
 header {
   padding: 10px 20px;
-}
-.logo-title {
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: space-between;
+  gap: 12px;
 }
-.logo {
-  width: 100px;
-}
-h1 {
-  font-size: 32px;
-  color: #00ff66;
-  margin: 0;
-}
+.logo-title { display: flex; align-items: center; gap: 12px; }
+.logo { width: 32px; height: 32px; object-fit: contain; }
+h1 { font-size: 28px; color: #00ff66; margin: 0; }
 
-/* Pulsanti giorni */
-.day-selector {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-.day-selector button {
-  padding: 12px 20px;
-  font-size: 16px;
-  border-radius: 6px;
+/* Session controls (welcome + logout) */
+.session-controls { display: flex; align-items: center; gap: 10px; }
+#welcome-text { color: #66ff99; font-size: 14px; }
+#logout-btn {
+  padding: 8px 12px;
   border: none;
-  background: #00ff66;
-  color: #0d0d0d;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
-.day-selector button:hover {
-  background: #009944;
-  color: #ffffff;
-}
-
-/* Giorni */
-.day {
-  display: none;
-}
-.day.active {
-  display: block;
-}
-h2 {
-  font-size: 26px;
-  color: #00ff66;
-  margin: 30px 0 15px 20px;
-}
-
-/* Sezioni muscolari */
-.muscle-group {
-  margin: 25px auto;
-  max-width: 900px;
-  width: 90%;
-}
-.muscle-group h3 {
-  font-size: 22px;
-  color: #66ff99;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #00ff66;
-  padding-bottom: 5px;
-}
-
-/* Card esercizio */
-.exercise {
-  background: #1a1a1a;
-  margin: 15px 0;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,255,102,0.3);
-}
-.exercise h4 {
-  color: #00ff66;
-  margin: 10px 0;
-}
-.exercise img {
-  width: 100%;
-  max-width: 300px;
   border-radius: 6px;
-  margin: 10px 0;
-  display: block;
-}
-.exercise label {
-  display: block;
-  margin-top: 8px;
+  background: #222;
   color: #e0ffe0;
+  cursor: pointer;
+  border: 1px solid #00ff66;
+  transition: 0.25s;
 }
-.exercise input,
-.exercise textarea {
+#logout-btn:hover { background: #009944; color: #fff; }
+
+/* Login */
+.auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth-card {
+  width: 95%;
+  max-width: 420px;
+  background: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,255,102,0.25);
+  padding: 20px;
+}
+.auth-card h2 { color: #00ff66; margin: 10px 0 16px; }
+.auth-card label { display: block; margin-top: 10px; color: #e0ffe0; }
+.auth-card input {
   width: 100%;
   margin-top: 6px;
-  padding: 8px;
-  font-size: 14px;
+  padding: 10px;
+  font-size: 16px;
   border: 1px solid #00ff66;
   border-radius: 6px;
   background: #0d0d0d;
   color: #e0ffe0;
 }
-.exercise input::placeholder,
-.exercise textarea::placeholder {
-  color: #66ff99;
+.auth-card input:focus {
+  outline: none;
+  border-color: #66ff99;
+  box-shadow: 0 0 6px rgba(0,255,102,0.5);
 }
-.exercise textarea {
-  min-height: 60px; /* circa 3 righe */
-  resize: none;
-  overflow: hidden;
+#login-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  background: #00ff66;
+  color: #0d0d0d;
+  cursor: pointer;
+  transition: 0.25s;
 }
+#login-btn:hover { background: #009944; color: #fff; }
+.auth-message {
+  min-height: 20px;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: #ff4d4d; /* errore */
+}
+
+/* Day selector */
+.day-selector {
+  display: flex; justify-content: center; gap: 10px; margin-top: 20px;
+}
+.day-selector button {
+  padding: 12px 20px; font-size: 16px; border-radius: 6px; border: none;
+  background: #00ff66; color: #0d0d0d; cursor: pointer; font-weight: bold;
+  transition: 0.25s;
+}
+.day-selector button:hover { background: #009944; color: #ffffff; }
+
+/* Days */
+.day { display: none; }
+.day.active { display: block; }
+h2 { font-size: 24px; color: #00ff66; margin: 30px 0 15px 20px; }
+
+/* Group container */
+.muscle-group { margin: 25px auto; max-width: 900px; width: 90%; }
+.muscle-group h3 {
+  font-size: 20px; color: #66ff99; margin-bottom: 10px;
+  border-bottom: 1px solid #00ff66; padding-bottom: 5px;
+}
+
+/* Exercise card */
+.exercise {
+  background: #1a1a1a; margin: 15px 0; padding: 15px;
+  border-radius: 8px; box-shadow: 0 0 10px rgba(0,255,102,0.25);
+}
+.exercise h4 { color: #00ff66; margin: 6px 0 10px; }
+
+/* Responsive images */
+.exercise img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 10px 0;
+  display: block;
+}
+
+.exercise label { display: block; margin-top: 8px; color: #e0ffe0; }
+.exercise input, .exercise textarea {
+  width: 100%; margin-top: 6px; padding: 8px; font-size: 14px;
+  border: 1px solid #00ff66; border-radius: 6px;
+  background: #0d0d0d; color: #e0ffe0;
+}
+.exercise input::placeholder, .exercise textarea::placeholder { color: #66ff99; }
+.exercise textarea { min-height: 60px; resize: none; overflow: hidden; }
 
 /* Footer */
 footer {
-  text-align: center;
-  padding: 15px;
-  margin-top: 40px;
-  background: #0d0d0d;
-  border-top: 1px solid #00ff66;
-  color: #66ff99;
-  font-size: 14px;
+  text-align: center; padding: 15px; margin-top: 40px;
+  background: #0d0d0d; border-top: 1px solid #00ff66;
+  color: #66ff99; font-size: 14px;
 }
 
 /* Mobile */
 @media (max-width: 600px) {
-  .logo {
-    width: 90px;
-  }
-  h1 {
-    font-size: 28px;
-  }
-  h2 {
-    font-size: 24px;
-    margin: 24px 0 12px 16px;
-  }
-  .muscle-group h3 {
-    font-size: 20px;
-  }
-  .exercise img {
-    max-width: 100%;
-  }
+  .logo { width: 28px; height: 28px; }
+  h1 { font-size: 24px; }
+  h2 { font-size: 22px; margin: 24px 0 12px 16px; }
+  .muscle-group h3 { font-size: 18px; }
+  .exercise img { max-width: 100%; }
 }
