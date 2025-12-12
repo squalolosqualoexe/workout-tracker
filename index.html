@@ -1,89 +1,119 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Workout Tracker - Split 4 Giorni</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/logo.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/logo.png" type="image/png" />
+
+    <!-- Fonts & CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header>
-    <div class="logo-title">
-        <img src="img/logo.png" alt="Logo" class="logo">
-        <h1>Workout Tracker</h1>
+<!-- Login -->
+<div id="login-container" class="auth">
+    <div class="auth-card">
+        <div class="logo-title">
+            <img src="img/logo.png" alt="Logo" class="logo" />
+            <h1>Workout Tracker</h1>
+        </div>
+        <h2>Accedi</h2>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Inserisci username" autocomplete="username" />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Inserisci password" autocomplete="current-password" />
+
+        <button id="login-btn" onclick="login()">Login</button>
+        <p id="login-message" class="auth-message"></p>
     </div>
-</header>
-
-<div class="day-selector">
-    <button onclick="showDay('upper1')">Upper 1</button>
-    <button onclick="showDay('lower1')">Lower 1</button>
-    <button onclick="showDay('upper2')">Upper 2</button>
-    <button onclick="showDay('lower2')">Lower 2</button>
 </div>
 
-<!-- Upper 1 -->
-<div id="upper1" class="day active">
-    <h2>Upper 1</h2>
-    <section class="muscle-group">
-        <h3>Esercizi Upper 1</h3>
-        <div class="exercise"><h4>Panca piana bilanciere</h4><img src="img/1.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Lat machine presa stretta</h4><img src="img/2.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Rematore pulley presa larga</h4><img src="img/3.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Croci ai cavi bassi</h4><img src="img/4.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Alzate laterali al cavo</h4><img src="img/5.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Alzate frontali con corda</h4><img src="img/6.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-    </section>
-</div>
+<!-- App (nascosta finché non si effettua il login) -->
+<div id="app-container" style="display:none;">
+    <header>
+        <div class="logo-title">
+            <img src="img/logo.png" alt="Logo" class="logo" />
+            <h1>Workout Tracker</h1>
+        </div>
+        <div class="session-controls">
+            <span id="welcome-text"></span>
+            <button id="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </header>
 
-<!-- Upper 2 -->
-<div id="upper2" class="day">
-    <h2>Upper 2</h2>
-    <section class="muscle-group">
-        <h3>Esercizi Upper 2</h3>
-        <div class="exercise"><h4>Rematore T-Bar</h4><img src="img/7.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Lat machine presa larga</h4><img src="img/8.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Spinte con manubri su panca a 30°</h4><img src="img/9.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Shoulder press al multipower</h4><img src="img/10.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Pec flies</h4><img src="img/11.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Alzate laterali su panca</h4><img src="img/12.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-    </section>
-</div>
+    <div class="day-selector">
+        <button onclick="showDay('upper1')">Upper 1</button>
+        <button onclick="showDay('lower1')">Lower 1</button>
+        <button onclick="showDay('upper2')">Upper 2</button>
+        <button onclick="showDay('lower2')">Lower 2</button>
+    </div>
 
-<!-- Lower 1 -->
-<div id="lower1" class="day">
-    <h2>Lower 1</h2>
-    <section class="muscle-group">
-        <h3>Esercizi Lower 1</h3>
-        <div class="exercise"><h4>Hack Squat</h4><img src="img/13.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Leg Curl</h4><img src="img/14.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Leg Extension</h4><img src="img/15.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Hip Thrust</h4><img src="img/16.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Curl Panca 45°</h4><img src="img/17.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Estensioni tricipiti al cavo</h4><img src="img/18.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-    </section>
-</div>
+    <!-- Upper 1 -->
+    <div id="upper1" class="day active">
+        <h2>Upper 1</h2>
+        <section class="muscle-group">
+            <h3>Esercizi Upper 1</h3>
+            <div class="exercise"><h4>Panca piana bilanciere</h4><img src="img/1.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Lat machine presa stretta</h4><img src="img/2.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Rematore pulley presa larga</h4><img src="img/3.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Croci ai cavi bassi</h4><img src="img/4.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Alzate laterali al cavo</h4><img src="img/5.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Alzate frontali con corda</h4><img src="img/6.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+        </section>
+    </div>
 
-<!-- Lower 2 -->
-<div id="lower2" class="day">
-    <h2>Lower 2</h2>
-    <section class="muscle-group">
-        <h3>Esercizi Lower 2</h3>
-        <div class="exercise"><h4>Stacco rumeno</h4><img src="img/19.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Leg press</h4><img src="img/20.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Iperestensioni</h4><img src="img/21.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Adductor machine</h4><img src="img/22.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Bicep preacher curl</h4><img src="img/23.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-        <div class="exercise"><h4>Estensioni su panca</h4><img src="img/24.gif" alt=""><label>Carico (kg):</label><input type="number"><label>Note:</label><textarea rows="3"></textarea></div>
-    </section>
-</div>
+    <!-- Upper 2 -->
+    <div id="upper2" class="day">
+        <h2>Upper 2</h2>
+        <section class="muscle-group">
+            <h3>Esercizi Upper 2</h3>
+            <div class="exercise"><h4>Rematore T-Bar</h4><img src="img/7.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Lat machine presa larga</h4><img src="img/8.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Spinte con manubri su panca a 30°</h4><img src="img/9.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Shoulder press al multipower</h4><img src="img/10.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Pec flies</h4><img src="img/11.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Alzate laterali su panca</h4><img src="img/12.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+        </section>
+    </div>
 
-<footer>
-    <p>Workout Tracker © 2025 - Creato da Riccardo</p>
-</footer>
+    <!-- Lower 1 -->
+    <div id="lower1" class="day">
+        <h2>Lower 1</h2>
+        <section class="muscle-group">
+            <h3>Esercizi Lower 1</h3>
+            <div class="exercise"><h4>Hack Squat</h4><img src="img/13.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Leg Curl</h4><img src="img/14.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Leg Extension</h4><img src="img/15.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Hip Thrust</h4><img src="img/16.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Curl Panca 45°</h4><img src="img/17.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Estensioni tricipiti al cavo</h4><img src="img/18.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+        </section>
+    </div>
+
+    <!-- Lower 2 -->
+    <div id="lower2" class="day">
+        <h2>Lower 2</h2>
+        <section class="muscle-group">
+            <h3>Esercizi Lower 2</h3>
+            <div class="exercise"><h4>Stacco rumeno</h4><img src="img/19.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Leg press</h4><img src="img/20.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Iperestensioni</h4><img src="img/21.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Adductor machine</h4><img src="img/22.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Bicep preacher curl</h4><img src="img/23.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+            <div class="exercise"><h4>Estensioni su panca</h4><img src="img/24.gif" alt=""><label>Carico (kg):</label><input type="number" placeholder="Peso in kg"><label>Note:</label><textarea rows="3" placeholder="Note"></textarea></div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Workout Tracker © 2025 - Creato da Riccardo</p>
+    </footer>
+</div>
 
 <script src="script.js"></script>
 </body>
 </html>
-
